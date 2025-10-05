@@ -24,41 +24,73 @@ Fm = 398
 
 # Вертикальная плоскость: XY
 # ∑M(A) = 0
-# -Fr*a - Fa*d + Rb*(a + b) = 0
-Rb = (Fr*a + Fa*d)/(a + b)
+# -Fr*a - Fa*d + Rby*(a + b) = 0
+Rby = (Fr*a + Fa*d)/(a + b)
 
 # ∑M(B) = 0
-# -Ra*(a + b) + Fr*b - Fa*d = 0
-Ra = (Fr*b - Fa*d)/(a + b)
+# -Ray*(a + b) + Fr*b - Fa*d = 0
+Ray = (Fr*b - Fa*d)/(a + b)
 
 # Проверка ось Y
-# Ra + Rb - Fr = 0
-assert Ra + Rb - Fr == 0, 'Сумма сил должна быть равна нулю'
+# Ray + Rby - Fr = 0
+assert Ray + Rby - Fr == 0, 'Сумма сил должна быть равна нулю'
 
 # Вывод результата
 print("\n1.Расчет реакции опор")
 print("Вертикальная плоскость: XY")
 print(f"Момент Fa*d = {Fa*d} Н·мм")
 print("Ось Y")
-print(f"Ra = {Ra}")
-print(f"Rb = {Rb}\n")
+print(f"Ray = {Ray:.3f}")
+print(f"Rby = {Rby:.3f}\n")
 
 
 # Горизонтальная плоскость: XZ
 # ∑M(A) = 0
-# -Ft*a + Rb*(a + b) + Fm*(a + b + c) = 0
-Rb = (Ft*a - Fm*(a + b + c))/(a + b)
+# -Ft*a + Rbz*(a + b) + Fm*(a + b + c) = 0
+Rbz = (Ft*a - Fm*(a + b + c))/(a + b)
 
 # ∑M(B) = 0
-# -Ra*(a + b) + Ft*b + Fm*c = 0
-Ra = (Ft*b + Fm*c)/(a + b)
+# -Raz*(a + b) + Ft*b + Fm*c = 0
+Raz = (Ft*b + Fm*c)/(a + b)
 
 # Проверка ось Z
-# Ra - Ft + Rb + Fm = 0 
-assert Ra - Ft + Rb + Fm == 0 , 'Сумма сил должна быть равна нулю'
+# Raz - Ft + Rbz + Fm = 0 
+assert Raz - Ft + Rbz + Fm == 0 , 'Сумма сил должна быть равна нулю'
 
 # Вывод результата
 print("Горизонтальная плоскость: ZY")
 print("Ось Z")
-print(f"Ra = {Ra}")
-print(f"Rb = {Rb}\n")
+print(f"Raz = {Raz:.3f}")
+print(f"Rbz = {Rbz:.3f}\n")
+
+
+#--------------------Эпюры--------------------
+# Силы: положительно = балка крутится
+# по часовой стрелке
+# 
+# Моменты: положительно = балка хочет изогнуться
+# вверх
+
+# Вертикальная плоскость: XY
+# 1.Участок 0 ≤ x ≤ a
+# x = a
+Ma = Ray * a
+
+# Вывод результата
+print("\n2.Построение эпюр")
+print("Вертикальная плоскость: XY\n")
+print("1.Участок 0 ≤ x ≤ a")
+print("x = 0: Миy = 0")
+print(f"x = a: Миy = {Ma:.1f}\n")
+
+
+# 2.Участок a ≤ x ≤ (a + b)
+# x = a
+Ma = Ray * a + Fa * d
+# x = a + b
+Mb = Ray * (a + b) + Fa * d - Fr * b
+
+# Вывод результата
+print("2.Участок a ≤ x ≤ (a + b)")
+print(f"x = a: Миy = {Ma:.1f}")
+print(f"x = a+b: Миy = {Mb:.1f}\n")
