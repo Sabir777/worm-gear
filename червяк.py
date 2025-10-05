@@ -85,11 +85,11 @@ print("--------------------------------------------------\n")
 # Моменты: положительно = против часовой стрелки
 
 # ∑M(A) = 0
-# -Ft*a + Rb*(a + b) + Fm*(a + b + c) = 0
+# Ft*a - Rb*(a + b) - Fm*(a + b + c) = 0
 Rb = (Ft*a - Fm*(a + b + c))/(a + b)
 
 # ∑M(B) = 0
-# -Ra*(a + b) + Ft*b + Fm*c = 0
+# Ra*(a + b) - Ft*b - Fm*c = 0
 Ra = (Ft*b + Fm*c)/(a + b)
 
 # Проверка ось Z
@@ -113,7 +113,7 @@ print(f"Rb = {Rb:.3f}\n")
 
 # 1.Участок 0 ≤ x ≤ a
 # x = a
-Ma = Ra * a
+Ma = -Ra * a
 
 # Вывод результата
 print("\n2.Построение эпюр")
@@ -124,9 +124,9 @@ print(f"x = a: Миy = {Ma:.1f}\n")
 
 # 2.Участок a ≤ x ≤ (a + b)
 # x = a
-Ma = Ra * a
+Ma = -Ra * a
 # x = a + b
-Mb = Ra * (a + b) - Ft * b
+Mb = -Ra * (a + b) + Ft * b
 
 # Вывод результата
 print("2.Участок a ≤ x ≤ (a + b)")
@@ -135,9 +135,9 @@ print(f"x = a+b: Миy = {Mb:.1f}\n")
 
 # 3.Участок (a + b) ≤ x ≤ (a + b + c)
 # x = a + b
-Mb = Ra * (a + b) - Ft * b
+Mb = -Ra * (a + b) + Ft * b
 # x = a + b + c
-Mc = Ra * (a + b + c) - Ft * (b + c) + Rb * c
+Mc = -Ra * (a + b + c) + Ft * (b + c) - Rb * c
 
 # Вывод результата
 print("3.Участок (a + b) ≤ x ≤ (a + b + c)")
