@@ -3,6 +3,7 @@
 n = 1413 # Обороты в минуту
 
 # Подшипник: данные
+# 7608
 Cr = 90000
 e = 0.296
 Y = 2.026
@@ -76,6 +77,8 @@ print(f"S1 = {S1:.1f}")
 print(f"S2 = {S2:.1f}")
 print(f"F1 = {F1:.1f}")
 print(f"F2 = {F2:.1f}")
+print(f"Fa1/VFr1 = {F1/Ra:.1f}")
+print(f"Fa2/VFr2 = {F2/Rb:.1f}")
 print(f"F1_ek = {F1_ek:.1f}")
 print(f"F2_ek = {F2_ek:.1f}")
 
